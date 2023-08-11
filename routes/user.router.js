@@ -1,10 +1,11 @@
 const user = require("../controller/user.controller");
 const router = require("express").Router();
+const auth = require("../auth/authorization");
 
-router.get("/", user.findAll);
-router.get("/:id", user.findOne);
-router.post("/", user.create);
-router.patch("/", user.update);
-router.delete("/", user.delete);
+router.get("/", auth, user.findAll);
+router.get("/:id", auth, user.findOne);
+router.post("/", auth, user.create);
+router.patch("/", auth, user.update);
+router.delete("/", auth, user.delete);
 
 module.exports = router;

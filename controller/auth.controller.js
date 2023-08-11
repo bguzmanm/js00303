@@ -27,6 +27,6 @@ exports.singIn = async (req, res) => {
       message: result.error.message || 'Some error ocurred!',
     })
   }
-  res.status(200).json(result);
+  res.status(200).json({ result });
 
 }

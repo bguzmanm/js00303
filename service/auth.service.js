@@ -5,10 +5,12 @@ const jwt = require("jsonwebtoken");
 const User = db.user;
 const Op = db.Sequelize.Op;
 
+require("dotenv").config();
+
 exports.signUp = async (username, password, firstName, lastName, email) => {
   try {
     // generamos un fragmento aleatorio para ser usado en el password
-    const salt = await bcryptjs.genSalt(10);
+    const salt = await bcryptjs.genSalt(process.env.SALT);
     const hashedPassword = await bcryptjs.hash(password, salt);
     const result = await User.create({
       username,
@@ -30,7 +32,6 @@ exports.signUp = async (username, password, firstName, lastName, email) => {
 
 exports.singIn = async (username, password) => {
 
-  const SECRET = 'eldelamontaña';
   try {
     const foundUser = await User.findOne({ where: { username } });
     console.log(foundUser);
@@ -57,7 +58,7 @@ exports.singIn = async (username, password) => {
     // 2. firmar el jwt
     const token = jwt.sign(
       payload,
-      SECRET,
+      process.env.SECRET,
       {
         expiresIn: 3600000
       }
