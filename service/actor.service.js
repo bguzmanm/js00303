@@ -7,10 +7,10 @@ exports.findAll = async () => {
   try {
     return await Actor.findAll();
   } catch (error) {
-    console.error(err);
+    console.error(error);
     return ({
-      error: err.code || 500,
-      message: err.message || 'Some error ocurred while retrieving actors.',
+      error: error.code || 500,
+      message: error.message || 'Some error ocurred while retrieving actors.',
     });
   }
 }

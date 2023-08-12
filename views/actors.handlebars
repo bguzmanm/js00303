@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Listado de Actores y Actrices</h2>
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each actors}}
+        <tr>
+          <th>{{actorId}}</th>
+          <td>{{firstName}}</td>
+          <td>{{lastName}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+
+  </table>
+</div>
